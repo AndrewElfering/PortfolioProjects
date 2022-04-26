@@ -1,0 +1,56 @@
+--Accuracy of mmr estimate vs sale price 
+
+SELECT *
+FROM car_prices;
+
+SELECT year, make, model, mmr
+FROM car_prices
+ORDER BY mmr DESC;
+
+SELECT year, make, model, sellingprice
+FROM car_prices
+ORDER BY sellingprice DESC;
+
+SELECT model, MAX(mmr) AS mmr, MAX(sellingprice) AS sale_price
+FROM car_prices
+WHERE mmr is not null
+GROUP BY model;
+
+
+SELECT state, MAX(mmr) AS mmr, MAX(sellingprice) AS sale_price
+FROM car_prices
+WHERE mmr is not null
+GROUP BY state;
+
+
+SELECT make, sellingprice - mmr AS dif 
+FROM car_prices
+WHERE make is not null
+ORDER BY make;
+
+
+SELECT condition, MAX(mmr) AS mmr, MAX(sellingprice) AS  sale_price
+FROM car_prices
+WHERE condition is not null
+GROUP BY condition;
+
+SELECT make, MAX(mmr) AS mmr, MAX(sellingprice) AS sale_price
+FROM car_prices
+GROUP BY make;
+
+SELECT odometer, make, model, sellingprice - mmr AS diff
+FROM car_prices
+WHERE odometer > 100000;
+
+SELECT odometer, make, model, sellingprice - mmr AS diff
+FROM car_prices
+WHERE odometer < 100000;
+
+SELECT year, MAX(sellingprice) AS sale_price, MAX(mmr) AS mmr
+FROM car_prices
+WHERE year is not null
+Group BY year;
+
+SELECT year, sellingprice - mmr AS diff
+FROM car_prices
+ORDER BY year ASC;
