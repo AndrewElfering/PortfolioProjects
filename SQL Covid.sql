@@ -10,7 +10,7 @@ Where continent is not null
 order by 1,2
 
 
--- Total Cases vs. Total Deths 
+-- Total Cases vs. Total Deaths 
 
 Select Location, Date, total_cases,total_deaths, (total_deaths/total_cases)* 100 as DeathPercentage
 FROM [Portfolio Project]..CovidDeaths
